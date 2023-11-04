@@ -1,0 +1,163 @@
+/* src/MortgageCalculator.css */
+
+ .calculator-container {
+    width: 50%; /* Set the width to 50% */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 10px solid white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: #3498db;
+    font-family: 'Poppins', sans-serif; 
+  }
+  
+  .calculator-container h1 {
+    text-align: center;
+    font-size: 34px; /* Adjust the font size as needed */
+    font-weight: 600; /* Adjust the font weight as needed (e.g., 500, 700) */
+    /* text-transform: uppercase; Convert text to uppercase for modern styling */
+    color: #b3e00e; /* Text color (adjust to match your design) */
+    font-family: 'Poppins', sans-serif; 
+  }
+
+  .calculator-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .calculator {
+    flex: 1;
+    padding: 20px;
+    border: none;
+    margin: 10px;
+    border-radius: 10px; /* Rounded corners for the calculator boxes */
+    background-color: #E0E7EF; /* Light blue background color */
+  }
+  
+  .calculator h2 {
+    text-align: center;
+    font-size: 24px; /* Adjust the font size as needed */
+    font-weight: 600; /* Adjust the font weight as needed (e.g., 500, 700) */
+    text-transform: uppercase; /* Convert text to uppercase for modern styling */
+    color: #333; /* Text color (adjust to match your design) */
+  }
+  
+  .calculator label {
+    font-size: 16px; /* Adjust the font size for labels */
+    font-weight: 400; /* Adjust the font weight for labels (e.g., 300, 500) */
+    color: #555; /* Text color for labels (adjust as needed) */
+  }
+  .calculator input {
+    width: 100%;
+  }
+  
+  .calculator-summary {
+    flex: 1;
+    padding: 20px;
+    border: 2px solid #999;
+    margin: 10px;
+    border-radius: 10px; /* Rounded corners for the summary box */
+    background-color: #E0E7EF; /* Light blue background color */
+    height: 150px; 
+  }
+  
+  .summary-and-submit-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+  }
+  .calculator-summary h2 {
+    text-align: center;
+  }
+
+  .slider-container {
+    padding-right: 10px; /* Add space to the right of the sliders */
+  }
+  
+
+/* Style the sliders with a purple color */
+input[type="range"] {
+    appearance: none;
+    width: 100%;
+    height: 20px; /* Adjust the height as needed */
+    background: linear-gradient(to right, #3498db, #6633cc); /* Gradient color for the slider track */
+    border: none; /* Remove the default border */
+    border-radius: 20px; /* Rounded corners for the slider track */
+    outline: none;
+    transition: background 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Box shadow for 3D effect */
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: yellow; /* Yellow color for the slider thumb */
+    border: none;
+    border-radius: 50%; /* Rounded thumb */
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Box shadow for 3D effect */
+  }
+  
+  input[type="range"]:hover {
+    background: linear-gradient(to right, #6633cc, #3498db); /* Gradient color change on hover */
+  }
+
+  .submit-button {
+    background-color: #4CAF50; /* Green background color for the button */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transition on hover */
+    margin-top: 10px; /* Add some space from the loan summary */
+  
+    /* Modern typography for the button */
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  .calculator-logo {
+    width: 100px; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+    margin-bottom: 20px; /* Add some spacing below the logo */
+    /* Add any other styles you want */
+  }
+  
+  .reset-button {
+    background-color: #ff6347; /* Tomato red background color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transition on hover */
+    margin-top: 10px; /* Add some space from the "Submit" button */
+  
+    /* Modern typography for the button */
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  
+  .reset-button:hover {
+    background-color: #ff5733; /* Darker red on hover */
+  }
+  
+  .centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set the height to 100% of the viewport height for vertical centering */
+  }
+  

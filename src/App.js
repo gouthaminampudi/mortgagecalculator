@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React, { useState } from 'react';
+import AppRoutes from './Routes';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 
 function App() {
+  const initialSubmissions = [
+    {
+      purchasePrice: 250000,
+      downPayment: 50000,
+      repaymentTime: 15,
+      interestRate: 3.5,
+    }
+    // Add more default submissions if needed
+  ];
+
+  const [submissions, setSubmissions] = useState(initialSubmissions); 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+    <AppRoutes submissions={submissions} setSubmissions={setSubmissions} />
+  </Router>
   );
 }
 
