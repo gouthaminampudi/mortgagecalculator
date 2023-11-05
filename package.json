@@ -17,8 +17,8 @@
     "node" : ">=18.0.0 <19.0.0"
   },
   "scripts": {
-    "start": "react-scripts start --openssl-legacy-provider ", 
-    "build": "react-scripts build --openssl-legacy-provider ",
+    "start": "react-scripts start --openssl-legacy-provider", 
+    "build": "react-scripts build --openssl-legacy-provider",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
