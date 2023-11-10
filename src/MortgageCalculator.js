@@ -8,8 +8,11 @@ const MortgageCalculator = ({ submissions, setSubmissions })  => {
   const [downPayment, setDownPayment] = useState(0);
   const [repaymentTime, setRepaymentTime] = useState(0);
   const [interestRate, setInterestRate] = useState(0);
- const [currentSubmission, setCurrentSubmission] = useState({});
-  
+  const [currentSubmission, setCurrentSubmission] = useState({});
+    // Add this state variable along with your existing state
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState('');
+ 
   // Calculate the monthly mortgage payment
   const calculateMonthlyPayment = () => {
     const principal = purchasePrice - downPayment;
@@ -40,12 +43,15 @@ const MortgageCalculator = ({ submissions, setSubmissions })  => {
         interestRate,
     };
   
-    console.log("submissions 1->>"+submissions);
     // Update the submissions array with the new submission
     setSubmissions([...submissions, newSubmission]);
-    console.log("submissions 2->>"+submissions);
-  // Optionally, clear the form or set the currentSubmission to an empty object
-  setCurrentSubmission({});
+ 
+    // Show notification
+    setNotificationMessage('Submission added successfully!');
+    setShowNotification(true);
+ 
+    // Optionally, clear the form or set the currentSubmission to an empty object
+    setCurrentSubmission({});
     
   };
 
@@ -120,15 +126,22 @@ const MortgageCalculator = ({ submissions, setSubmissions })  => {
         <p>Monthly Payment: ${calculateMonthlyPayment()}</p>
       </div>
       <div className="summary-and-submit-container">
-      <div className="calculator-summary">
-        <button onClick={handleSubmit} className="submit-button">Submit</button>
-        <div className="reset-container">
-            <button onClick={handleReset} className="reset-button">Reset</button>
-        </div>
-        <Link to="/submissions" className="submissions-link">View Submissions</Link>
+            <div className="calculator-summary">
+                <button onClick={handleSubmit} className="submit-button">Submit</button>
+                <div className="reset-container">
+                    <button onClick={handleReset} className="reset-button">Reset</button>
+                </div>
+                <Link to="/submissions" className="submissions-link">View Submissions</Link>
 
+            </div>
         </div>
+      {/* Notification */}
+      {showNotification && (
+        <div className="notification-container">
+          <p>{notificationMessage}</p>
+          <button onClick={() => setShowNotification(false)}>Close</button>
         </div>
+      )}        
     </div>
     </div>
   );

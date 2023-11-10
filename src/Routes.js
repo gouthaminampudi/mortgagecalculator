@@ -6,7 +6,7 @@ import MortgageCalculator from './MortgageCalculator';
 
 const AppRoutes = ({ submissions , setSubmissions}) =>  (
   <Routes>
-    <Route path="/submissions" element={<SubmissionsTable submissions={submissions} />} />
+    <Route path="/submissions" element={<SubmissionsTable submissions={submissions} setSubmissions={setSubmissions} />} />
     <Route path="/" element={<MortgageCalculator submissions={submissions} setSubmissions={setSubmissions} />} />
   </Routes>
 );

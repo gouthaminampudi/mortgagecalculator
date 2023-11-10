@@ -161,3 +161,27 @@ input[type="range"] {
     height: 100vh; /* Set the height to 100% of the viewport height for vertical centering */
   }
   
+  .notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .notification-container button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  .top-right {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
