@@ -49,8 +49,11 @@ const MortgageCalculator = ({ submissions, setSubmissions })  => {
     // Show notification
     setNotificationMessage('Submission added successfully!');
     setShowNotification(true);
- 
-    // Optionally, clear the form or set the currentSubmission to an empty object
+    // Automatically close the notification after 2 seconds
+    setTimeout(() => {
+        setShowNotification(false);
+    }, 2000);
+        // Optionally, clear the form or set the currentSubmission to an empty object
     setCurrentSubmission({});
     
   };
@@ -139,7 +142,7 @@ const MortgageCalculator = ({ submissions, setSubmissions })  => {
       {showNotification && (
         <div className="notification-container">
           <p>{notificationMessage}</p>
-          <button onClick={() => setShowNotification(false)}>Close</button>
+          <button onClick={() => setShowNotification(false)}>&#10006; </button>
         </div>
       )}        
     </div>
