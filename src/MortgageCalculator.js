@@ -69,7 +69,7 @@ const MortgageCalculator = ({ submissions, setSubmissions })  => {
   return (
     <div className="centered-container">
     <div className="calculator-container">
-      <img src ={ require('./calculator.png')} alt="Calculator" className="calculator-logo" />
+      <img src ={ require('./new_calculator.png')} alt="Calculator" className="calculator-logo" />
       <h1>Mortgage  Calculator</h1>
       <div className="calculator-row">
         <div className="calculator">
