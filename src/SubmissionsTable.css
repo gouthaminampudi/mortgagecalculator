@@ -9,6 +9,7 @@
   
   .table-container {
     width: 80%; /* Adjust the width as needed */
+    margin-bottom: 20px;
   }
   table {
     width: 100%;
@@ -37,4 +38,55 @@ button {
     padding: 6px 10px;
     cursor: pointer;
   }
-        
+  .rounded-textbox {
+    width: -webkit-fill-available;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .rounded-textbox label {
+    margin-bottom: 5px;
+    padding: 6px 10px;
+  }
+  
+  .rounded-textbox input {
+    width: 70%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }      
+
+.form-container {
+    display: flex;
+    /*flex-direction: column;  Adjust the flex direction as needed */
+    background-color: #ffffcc; /* Yellow background color */
+    /*padding: 20px;  Adjust the padding as needed for spacing */
+    border-radius: 10px; /* Optional: Add rounded corners for a better appearance */
+   /*  margin-top: 20px; Adjust the margin as needed */
+  }
+
+  .button-green {
+    background-color: #28a745; /* Green color for submit button */
+    height: 36px; 
+  }
+  .submit-container{
+    margin-top: 10px;
+    padding: 8px;
+  }
+  .required {
+    color: red; /* Set the color as needed */
+    margin-left: 5px; /* Adjust the margin as needed for spacing */
+  }
+ 
+  .validation-error {
+    color: red; /* Set the color as needed */
+    font-size: 14px; /* Adjust the font size as needed */
+    margin-top: 5px; /* Adjust the margin as needed for spacing */
+    padding: 8px;
+  }
+  
+  
+  

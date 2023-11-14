@@ -5,6 +5,11 @@ import './SubmissionsTable.css';
 const SubmissionsTable = ({ submissions,setSubmissions }) => {
   const [sortBy, setSortBy] = useState('purchasePrice');
   const [sortOrder, setSortOrder] = useState('asc');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [notification, setNotification] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
   const handleSort = (column) => {
     if (sortBy === column) {
       // If clicking on the same column, reverse the sort order
@@ -35,7 +40,64 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
       return bValue - aValue;
     }
   });
-    
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+    setEmailError('');
+  };
+
+  const handlePhoneNumberChange = (event) => {
+    setPhoneNumber(event.target.value);
+    setPhoneError('');
+  };
+
+  const handleSubmit = async () => {
+    // Validate email and phone number
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    const phoneRegex = /^\d{10}$/;
+
+    if (!emailRegex.test(email)) {
+      setEmailError('Please enter a valid email address.');
+      return;
+    }
+
+    if (!phoneRegex.test(phoneNumber)) {
+      setPhoneError('Please enter a valid phone number (10 digits).');
+      return;
+    }
+    // Create a POST request to the server
+    const requestBody = JSON.stringify({
+        submissions,
+        email,
+        phoneNumber,
+    });
+
+  console.log('Request Body:', requestBody);
+    // Create a POST request to the server
+    try {
+      const response = await fetch('YOUR_SERVER_ENDPOINT', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: requestBody,
+      });
+
+      // Check if the request was successful (you may need to adjust this based on your server's response)
+      if (response.ok) {
+        setNotification('Data has been submitted successfully.');
+        // Clear submissions
+        setSubmissions([]);
+        // You can also reset email and phone number if needed
+        setEmail('');
+        setPhoneNumber('');
+      } else {
+        alert('Error submitting data. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting data:', error);
+      alert('Error submitting data. Please try again.');
+    }
+  };  
   return (
     <div className="centered-container">
         <div className="table-container">
@@ -65,6 +127,23 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
                 </tbody>
             </table>
             <Link to="/" className="go-back-link">Go Back to Mortgage Calculator</Link>
+
+                <div className="form-container">
+                    <div className="rounded-textbox">
+                        <label>Email<span className="required">*</span>:</label>
+                        <input type="text" value={email} onChange={handleEmailChange} />
+                        <div className="validation-error">{emailError && <span >{emailError}</span>}</div>
+                    </div>
+                    <div className="rounded-textbox">
+                        <label>Phone<span className="required">*</span>:</label>
+                        <input type="text" value={phoneNumber} onChange={handlePhoneNumberChange} />
+                        <div className="validation-error">{phoneError && <span>{phoneError}</span>}</div>
+                    </div>
+                    <div className="submit-container">
+                    <button onClick={handleSubmit} className="button-green">Submit</button>
+                    </div>
+                    {notification && <div className="notification">{notification}</div>}
+                </div>
         </div>
     </div>
   );
