@@ -71,10 +71,10 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
         phoneNumber,
     });
 
-  console.log('Request Body:', requestBody);
+    //console.log('Request Body:', requestBody);
     // Create a POST request to the serverß
     try {
-      const response = await fetch('https://tf6ajztbc1.execute-api.us-east-2.amazonaws.com/dev/submissions', {
+      const response = await fetch('https://4wnvkdtjm4.execute-api.us-east-1.amazonaws.com/test/mortgagesubmission', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
