@@ -72,9 +72,9 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
     });
 
   console.log('Request Body:', requestBody);
-    // Create a POST request to the server
+    // Create a POST request to the serverß
     try {
-      const response = await fetch('YOUR_SERVER_ENDPOINT', {
+      const response = await fetch('https://tf6ajztbc1.execute-api.us-east-2.amazonaws.com/dev/submissions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -91,6 +91,7 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
         setEmail('');
         setPhoneNumber('');
       } else {
+        console.error(response);
         alert('Error submitting data. Please try again.');
       }
     } catch (error) {
