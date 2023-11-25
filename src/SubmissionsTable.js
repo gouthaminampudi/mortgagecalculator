@@ -10,6 +10,8 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
   const [notification, setNotification] = useState('');
   const [emailError, setEmailError] = useState('');
   const [phoneError, setPhoneError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false); // Define the isSubmitting state
+
   const handleSort = (column) => {
     if (sortBy === column) {
       // If clicking on the same column, reverse the sort order
@@ -28,8 +30,7 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
       setSubmissions(updatedSubmissions);
     }
   };
-  
-  
+
   const sortedSubmissions = [...submissions].sort((a, b) => {
     const aValue = a[sortBy];
     const bValue = b[sortBy];
@@ -64,6 +65,7 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
       setPhoneError('Please enter a valid phone number (10 digits).');
       return;
     }
+    setIsSubmitting(true); // Start submission
     // Create a POST request to the server
     const requestBody = JSON.stringify({
         submissions,
@@ -85,6 +87,7 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
       // Check if the request was successful (you may need to adjust this based on your server's response)
       if (response.ok) {
         setNotification('Data has been submitted successfully.');
+        setIsSubmitting(false); // Start submission
         // Clear submissions
         setSubmissions([]);
         // You can also reset email and phone number if needed
@@ -92,6 +95,7 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
         setPhoneNumber('');
       } else {
         console.error(response);
+        setIsSubmitting(false); // Start submission
         alert('Error submitting data. Please try again.');
       }
     } catch (error) {
@@ -110,6 +114,8 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
                     <th onClick={() => handleSort('downPayment')}>Down Payment</th>
                     <th onClick={() => handleSort('repaymentTime')}>Repayment Time</th>
                     <th onClick={() => handleSort('interestRate')}>Interest Rate</th>
+                    <th onClick={() => handleSort('loanAmount')}>Loan Amount</th>
+                    <th onClick={() => handleSort('monthlyPayment')}>Monthly Payment</th>
                     <th>Delete</th>
                 </tr>
                 </thead>
@@ -120,6 +126,8 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
                         <td>${submission.downPayment}</td>
                         <td>{submission.repaymentTime} years</td>
                         <td>{submission.interestRate}%</td>
+                        <td>{submission.loanAmount}</td>
+                        <td>{submission.monthlyPayment}</td>
                         <td>
                             <button onClick={() => handleDelete(index)}>Delete</button>
                         </td>
@@ -130,6 +138,7 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
             <Link to="/" className="go-back-link">Go Back to Mortgage Calculator</Link>
 
                 <div className="form-container">
+                {isSubmitting && <div className="progress-bar">Submitting...</div>}
                     <div className="rounded-textbox">
                         <label>Email<span className="required">*</span>:</label>
                         <input type="text" value={email} onChange={handleEmailChange} />

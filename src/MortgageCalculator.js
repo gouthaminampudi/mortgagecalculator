@@ -20,20 +20,16 @@ const MortgageCalculator = ({ submissions, setSubmissions })  => {
     const numberOfPayments = repaymentTime * 12;
     const numerator = Math.pow(1 + monthlyInterestRate, numberOfPayments);
     const denominator = numerator - 1;
-    const monthlyPayment = principal * (monthlyInterestRate * numerator) / denominator;
-    return monthlyPayment.toFixed(2);
+    const monthPayment = principal * (monthlyInterestRate * numerator) / denominator;
+    return monthPayment.toFixed(2);
   };
-
 
   const handleSubmit = () => {
     // You can send the selected values to a mortgage service or perform any other action here.
     // For this example, we'll log the values to the console.
-    console.log('Selected Values:', {
-      purchasePrice,
-      downPayment,
-      repaymentTime,
-      interestRate,
-    });
+
+    const calculatedLoanAmount = purchasePrice - downPayment;
+    const calculatedMonthlyPayment = calculateMonthlyPayment();
 
     // Prepare the current submission data based on the input values
     const newSubmission = {
@@ -41,8 +37,9 @@ const MortgageCalculator = ({ submissions, setSubmissions })  => {
         downPayment,
         repaymentTime,
         interestRate,
+        loanAmount: calculatedLoanAmount,      // Use the calculated value
+        monthlyPayment: calculatedMonthlyPayment 
     };
-  
     // Update the submissions array with the new submission
     setSubmissions([...submissions, newSubmission]);
  
@@ -64,6 +61,7 @@ const MortgageCalculator = ({ submissions, setSubmissions })  => {
     setDownPayment(0);
     setRepaymentTime(0);
     setInterestRate(0);
+
   };
 
   return (
@@ -122,10 +120,10 @@ const MortgageCalculator = ({ submissions, setSubmissions })  => {
             />
           </div>
         </div>
-      </div>
+    </div>
       <div className="calculator-summary">
         <h2>Loan Summary</h2>
-        <p>Loan Amount: ${purchasePrice - downPayment}</p>
+        <p>Loan Amount: ${purchasePrice - downPayment}</p> 
         <p>Monthly Payment: ${calculateMonthlyPayment()}</p>
       </div>
       <div className="summary-and-submit-container">

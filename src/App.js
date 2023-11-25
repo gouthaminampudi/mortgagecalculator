@@ -12,6 +12,8 @@ function App() {
       downPayment: 50000,
       repaymentTime: 15,
       interestRate: 3.5,
+      loanAmount:200000,
+      monthlyPayment:2500,
     }
     // Add more default submissions if needed
   ];
