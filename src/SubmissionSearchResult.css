@@ -1,0 +1,98 @@
+.submission-search-container {
+    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    height: auto; /* Set the height to 100% of the viewport height for vertical centering */
+  }
+  .input-group {
+    margin-bottom: 15px; /* Spacing between input fields */
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 5px; /* Spacing between label and input field */
+  }
+  .search-section {
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Rounded border for the search section */
+    padding: 15px;
+
+  }
+
+  .search-section h2 {
+    margin-top: 0;
+  }
+  .search-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Spacing between elements */
+  }
+  
+  .input-group label {
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+  
+  .input-group input {
+    border-radius: 20px; /* Rounded corners for inputs */
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+  }
+  
+  #email {
+    width: 250px; /* Set your desired width */
+  }
+  button {
+    border-radius: 20px; /* Rounded corners for button */
+    border: 1px solid #ccc;
+    padding: 5px 15px;
+  }
+  .results-section {
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Rounded border for the search section */
+    padding: 15px;
+  }
+  
+  .demarcation-line {
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+  }
+  
+  .hamburger-icon {
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .hamburger-menu {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .hamburger-menu a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: black;
+    /* Additional styling */
+  }
+
+  .results-section p {
+    color: #666; /* Or any color you prefer */
+    font-size: 16px;
+    /* Additional styling as needed */
+  }
+  
+  /* Add more CSS for table and buttons */
+  

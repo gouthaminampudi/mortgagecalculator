@@ -11,6 +11,11 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
   const [emailError, setEmailError] = useState('');
   const [phoneError, setPhoneError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false); // Define the isSubmitting state
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };  
 
   const handleSort = (column) => {
     if (sortBy === column) {
@@ -105,6 +110,18 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
   };  
   return (
     <div className="centered-container">
+    {/* Hamburger Icon */}
+    <div className="hamburger-icon" onClick={toggleMenu}>
+      ☰
+    </div>
+
+    {/* Hamburger Menu */}
+    {isMenuOpen && (
+      <div className="hamburger-menu">
+        <Link to="/" onClick={toggleMenu}>Home</Link>
+        {/* Add more links as needed */}
+      </div>
+    )}      
         <div className="table-container">
             <h2>Submissions Table</h2>
             <table>
@@ -135,8 +152,6 @@ const SubmissionsTable = ({ submissions,setSubmissions }) => {
                     ))}
                 </tbody>
             </table>
-            <Link to="/" className="go-back-link">Go Back to Mortgage Calculator</Link>
-
                 <div className="form-container">
                 {isSubmitting && <div className="progress-bar">Submitting...</div>}
                     <div className="rounded-textbox">

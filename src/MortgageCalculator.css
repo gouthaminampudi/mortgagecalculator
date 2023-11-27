@@ -185,3 +185,30 @@ input[type="range"] {
     top: 20px;
     right: 20px;
   }
+
+  .hamburger-icon {
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .menu-container {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .menu-link {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: black;
+    /* Add more styles as needed */
+  }
+  

@@ -12,6 +12,11 @@ const MortgageCalculator = ({ submissions, setSubmissions })  => {
     // Add this state variable along with your existing state
   const [showNotification, setShowNotification] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
  
   // Calculate the monthly mortgage payment
   const calculateMonthlyPayment = () => {
@@ -66,6 +71,18 @@ const MortgageCalculator = ({ submissions, setSubmissions })  => {
 
   return (
     <div className="centered-container">
+          {/* Hamburger Icon */}
+    <div className="hamburger-icon" onClick={toggleMenu}>
+      ☰
+    </div>
+
+    {/* Menu Items */}
+    {isMenuOpen && (
+      <div className="menu-container">
+        <Link to="/submissions" className="menu-link" onClick={toggleMenu}>View Submissions</Link>
+        <Link to="/submissionsearchresults" className="menu-link" onClick={toggleMenu}>Search for previous Submissions</Link>
+      </div>
+    )}
     <div className="calculator-container">
       <img src ={ require('./new_calculator.png')} alt="Calculator" className="calculator-logo" />
       <h1>Mortgage  Calculator</h1>
@@ -132,8 +149,6 @@ const MortgageCalculator = ({ submissions, setSubmissions })  => {
                 <div className="reset-container">
                     <button onClick={handleReset} className="reset-button">Reset</button>
                 </div>
-                <Link to="/submissions" className="submissions-link">View Submissions</Link>
-
             </div>
         </div>
       {/* Notification */}
